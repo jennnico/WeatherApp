@@ -64,4 +64,9 @@ h1{
   position: absolute;
 }
 
+#mist{
+  visibility: hidden;
+  position: absolute;
+}
+
 
