@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <!--ajax: for geolocation/weather-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+  <!-- Icons through FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<h1>Weather App</h1>
+
+<!--content of website-->
+<div class = "content">
+<!-- city and country -->
+<p><span id="city"></span> <span id="country"></span></p>
+<!--Separate info side-by-side -->
+<section class = "container">
+  <div class = "row">
+<!-- temp, unit, & describing word -->
+    <div class = "col-sm-6">
+    <div class = "data">
+      <!--Temp and unit only-->
+      <span id="temp"></span><button class="temp" id="tempunit" ></button>
+      <!--Humidity-->
+      <p>Humidity: <span id="humidity"></span>%</p>
+      <!--Describing word-->
+      <p id="desc"> </p>
+    </div>
+    </div>
+<!--Icon--> 
+    <div class = "col-sm-6">
+    <div class="icon">
+      <span id="cloud"> <i class="fa fa-cloud fa-3x"></i></span>
+      <span id="sun"><i class="fa fa-sun-o fa-3x"></i></span>
+      <span id="rain"><i class="fa fa-tint fa-3x"></i></span>
+      <span id="thunder"><i class="fa fa-bolt fa-3x"></i></span>
+      <span id="snow"><i class="fa fa-snowflake-o fa-3x"></i></span>
+      <span id="mist"><i class="fa fa-tint"></i></span>
+   </div>
+   </div>  
+<!-- to show coordinates: 
+<p><span id="coords1"></span></p>
+<p><span id="coords"></span></p>
+-->    
+  </div>
+</div>
+
+</html>
