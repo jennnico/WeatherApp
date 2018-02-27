@@ -1,0 +1,67 @@
+body{
+  text-align: center;
+  background: black;
+  color: white;
+  font-family: 'Cabin', sans-serif;
+}
+
+/*Just the heading*/
+h1{
+  font-size: 5rem;
+  margin-top: 2rem;
+}
+
+/*Everything BUT the heading*/
+.content{
+  font-size: 2rem;
+  margin-top: 2rem;
+}
+
+/*button for unit: C or F*/
+#tempunit{
+  background: black;
+  color: #898b8e;
+  border: black;
+}
+
+#tempunit:hover {
+    color: #687384;
+}
+
+/*temp, humidity, and describing word*/
+.data{
+  padding-left: 15rem;
+  margin-top: 2rem;
+}
+
+/* ALL icons.*/
+.icon{
+  margin-top: 4rem;
+  padding-right: 15rem;
+  position: relative;
+  display: inline-block;
+}
+
+/* INDIVIDUAL icons.*/
+#cloud{
+  visibility: hidden;
+  position: absolute;
+}
+#sun{
+  visibility: hidden;
+  position: absolute;
+}
+#rain{
+  visibility: hidden;
+  position: absolute;
+}
+#thunder{
+  visibility: hidden;
+  position: absolute;
+}
+#snow{
+  visibility: hidden;
+  position: absolute;
+}
+
+
