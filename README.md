@@ -16,10 +16,13 @@ Logic highlights:
 
 
 UPDATES: 
+
 •	I added a component. The toggle function is now part of the Weather component.
 
 •	Location and weather conditions are rendered from React. (Icons still come from HTML).
 
 Areas for improvement:
+
 •	Use React to render the icons.
+
 •	Use a different API. This one doesn't always work.
