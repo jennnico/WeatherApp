@@ -1,22 +1,51 @@
-var api = "https://fcc-weather-api.glitch.me/api/current?";
+//resources: 
+//https://www.w3schools.com/html/html5_geolocation.asp
+//http://www.developerdrive.com/2014/09/how-to-build-a-weather-app-with-html5s-geolocation-api/
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+var api = "https://fcc-weather-api.glitch.me/api/current?"; //weather API from FreeCodeCamp... not very accurate
 var lat, lon;
 var unitC = 'C'
 var currentTempInCelsius;
-
-//If the browser supports geolocation, give coordinates
-$( document ).ready(function(){
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
+//find current position
+navigator.geolocation.getCurrentPosition(function (position) {
       var lat = "lat=" + position.coords.latitude;
       var lon = "lon=" + position.coords.longitude;
       getWeather(lat, lon); 
     });
-  }else {
-    console.log("Geolocation is not supported by this browser.");
-  }  
-})
 
-//getWeather function uses coordinates from above to find city, country, and weather, then inserts above
+
+class Weather extends React.Component{
+  
+//switch between Fahrenheit and Celsius
+toggle() {
+  //changes the UNIT when you click
+  var originalUnit = $(tempunit).html(); //originally was C
+  var unitF = 'F';
+  $(tempunit).html(originalUnit == unitF? unitC : unitF);
+  //changes the temperature VALUE when you click  
+  var originalValue = $(temp).html(); //originally was IN C
+  var degreesF = (Math.round(currentTempInCelsius * (9/5) + 32) + " " + String.fromCharCode(176));
+  $(temp).html(originalValue == degreesF? currentTempInCelsius + " " + String.fromCharCode(176) : degreesF);
+}
+  
+render(){
+    return(
+      <div>
+        <p><span id="city"></span> <span id="country"></span></p>
+        <p><div className="tempa" className="data" id="temp"></div><button className="tempa" className="data" id="tempunit" onClick={() => this.toggle()}>C</button></p>
+        <div className="data">Humidity: </div> <div className="data" id="humidity"></div> <div className="data"> % </div>
+        <div id="desc"></div>     
+      </div>
+)
+}
+  
+}
+
+
+//getWeather function uses coordinates to find city, country, and weather
 function getWeather(lat, lon) {
   var urlString = api + lat + "&" + lon;
   $.ajax({
@@ -25,73 +54,63 @@ function getWeather(lat, lon) {
       $("#country").text(result.sys.country);
       currentTempInCelsius = (Math.round(result.main.temp * 10) / 10);
       $("#temp").text(currentTempInCelsius + " " + String.fromCharCode(176));
-      $("#tempunit").text(unitC);
+      //$("#tempunit").text(unitC);
       $("#humidity").text(result.main.humidity);
       $("#desc").text(result.weather[0].main);
       // $("#coords1").html(lat);
       //$("#coords").html(lon);
       IconGen(result.weather[0].main);
-    }
+      }
   });
 }
 
-//Toggle between F and C
-$('#tempunit').click(function() {
-  //changes the UNIT when you click
-  var originalUnit = $(this).html(); //originally was C
-  var unitF = 'F';
-  $(this).html(originalUnit == unitF? unitC : unitF);
-  //changes the temperature VALUE when you click  
-  var originalValue = $(temp).html(); //originally was IN C
-  var degreesF = (Math.round(currentTempInCelsius * (9/5) + 32) + " " + String.fromCharCode(176));
-  $(temp).html(originalValue == degreesF? currentTempInCelsius + " " + String.fromCharCode(176) : degreesF);
-});
 
-
-//Change icon and color, based on desc
+//Change icon and color, based on desc /(i.e., description/)
 function IconGen(desc) {
   var desc = desc.toLowerCase()
   switch(desc){
-  
    case "rain":
-     $("#rain").css('visibility', 'visible');
-     $("body").css('background', '#053075');
-     $('#tempunit').css('background', '#053075');
-   break;
+   $("#rain").css('visibility', 'visible');
+   $("body").css('background', '#053075');
+   $('#tempunit').css('background', '#053075');
+    break;
     
-   case "clear":
+    case "clear":
      $("#sun").css('visibility', 'visible');
      $("body").css('background', 'orange');
      $('#tempunit').css('background', 'orange');
-   break;
+    break;
     
-   case "clouds":
+    case "clouds":
      $("#cloud").css('visibility', 'visible');
      $("body").css('background', '#747377');
      $('#tempunit').css('background', '#747377');
-   break;
+    break;
     
-   case "thunder":
+    case "thunder":
      $("#thunder").css('visibility', 'visible');
      $("body").css('background', '#b56d01');
      $('#tempunit').css('background', '#b56d01');
-   break;
+    break;
       
-   case 'snow':
+    case 'snow':
      $("#snow").css('visibility', 'visible');
      $("body").css('background', '#0c8592');
      $('#tempunit').css('background', '#0c8592');
-   break;
+    break;
       
    case "mist":
      $("#mist").css('visibility', 'visible');
      $("body").css('background', '#5a7387');
      $('#tempunit').css('background', '#5a7387');
-   break;
+    break;
     
-   default:
-     $(".icon").css('visibility', 'hidden')
- }
-}
+    default:
+    $(".icon").css('visibility', 'hidden')
+         }}
 
 
+ReactDOM.render(
+  <div>
+    <Weather></Weather>
+  </div>, document.getElementById('root'))
