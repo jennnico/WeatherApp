@@ -31,7 +31,7 @@ function getWeather(lat, lon) {
       // $("#coords1").html(lat);
       //$("#coords").html(lon);
       IconGen(result.weather[0].main);
-    }
+      }
   });
 }
 
@@ -52,46 +52,44 @@ $('#tempunit').click(function() {
 function IconGen(desc) {
   var desc = desc.toLowerCase()
   switch(desc){
-  
    case "rain":
-     $("#rain").css('visibility', 'visible');
-     $("body").css('background', '#053075');
-     $('#tempunit').css('background', '#053075');
-   break;
+   $("#rain").css('visibility', 'visible');
+   $("body").css('background', '#053075');
+   $('#tempunit').css('background', '#053075');
+    break;
     
-   case "clear":
+    case "clear":
      $("#sun").css('visibility', 'visible');
      $("body").css('background', 'orange');
      $('#tempunit').css('background', 'orange');
-   break;
+    break;
     
-   case "clouds":
+    case "clouds":
      $("#cloud").css('visibility', 'visible');
      $("body").css('background', '#747377');
      $('#tempunit').css('background', '#747377');
-   break;
+    break;
     
-   case "thunder":
+    case "thunder":
      $("#thunder").css('visibility', 'visible');
      $("body").css('background', '#b56d01');
      $('#tempunit').css('background', '#b56d01');
-   break;
+    break;
       
-   case 'snow':
+    case 'snow':
      $("#snow").css('visibility', 'visible');
      $("body").css('background', '#0c8592');
      $('#tempunit').css('background', '#0c8592');
-   break;
+    break;
       
    case "mist":
      $("#mist").css('visibility', 'visible');
      $("body").css('background', '#5a7387');
      $('#tempunit').css('background', '#5a7387');
-   break;
+    break;
     
-   default:
-     $(".icon").css('visibility', 'hidden')
- }
-}
+    default:
+    $(".icon").css('visibility', 'hidden')
+         }}
 
 
