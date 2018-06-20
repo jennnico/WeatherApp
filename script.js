@@ -14,7 +14,7 @@ $( document ).ready(function(){
   }else {
     console.log("Geolocation is not supported by this browser.");
   }  
-})
+
 
 //getWeather function uses coordinates from above to find city, country, and weather, then inserts above
 function getWeather(lat, lon) {
@@ -92,4 +92,4 @@ function IconGen(desc) {
     $(".icon").css('visibility', 'hidden')
          }}
 
-
+})
