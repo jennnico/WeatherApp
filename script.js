@@ -1,10 +1,17 @@
+//resources: https://fcc-weather-api.glitch.me/
+//https://www.w3schools.com/html/html5_geolocation.asp
+//http://www.developerdrive.com/2014/09/how-to-build-a-weather-app-with-html5s-geolocation-api/
+
+
+//If the browser supports geolocation, give coordinates
+$( document ).ready(function(){
+  
+  
 var api = "https://fcc-weather-api.glitch.me/api/current?";
 var lat, lon;
 var unitC = 'C'
 var currentTempInCelsius;
-
-//If the browser supports geolocation, give coordinates
-$( document ).ready(function(){
+  
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
       var lat = "lat=" + position.coords.latitude;
@@ -91,5 +98,6 @@ function IconGen(desc) {
     default:
     $(".icon").css('visibility', 'hidden')
          }}
+
 
 })
